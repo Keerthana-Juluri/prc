@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 1: Round 1</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+
+      /* IMAGE + DARK OVERLAY */
+      background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+        url('background.jpg') center/cover no-repeat;
+    }
+
+    /* SOFT CENTER GLOW */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,215,150,0.08), transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* MOVING LIGHT GLOW (NEW) */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(120, 80, 255, 0.15), transparent 60%),
+                  radial-gradient(circle at 70% 60%, rgba(255, 100, 200, 0.12), transparent 60%);
+      animation: moveGlow 12s infinite alternate ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes moveGlow {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(40px, -40px); }
+    }
+
+    /* CURSOR GLOW */
+    #cursorGlow {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: 30px;
+      text-align: center;
+      color: white;
+
+      /* SLIGHTLY REDUCED DARKNESS FOR BALANCE */
+      background: rgba(0,0,0,0.55);
+
+      animation: flicker 5s infinite;
+    }
+
+    @keyframes flicker {
+      0%   { background-color: rgba(0,0,0,0.55); }
+      50%  { background-color: rgba(0,0,0,0.60); }
+      100% { background-color: rgba(0,0,0,0.56); }
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 48px;
+      text-shadow: 0 0 12px rgba(255,215,150,0.4);
+    }
+
+    .clue-text {
+      font-family: 'MedievalSharp', cursive;
+      font-size: 22px;
+      line-height: 1.9;
+      margin: 30px auto;
+      max-width: 800px;
+      color: #e8d8a8;
+      text-shadow: 0 0 8px rgba(255,215,150,0.4);
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .row img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(255,255,255,0.15);
+    }
+
+    .row img:hover {
+      transform: scale(1.08) translateY(-4px);
+      box-shadow:
+        0 0 20px rgba(255,255,255,0.6),
+        0 0 35px rgba(255,215,150,0.4);
+    }
+
+    .space { height: 90px; }
+    .shift-center { margin-left: 120px; }
+
+  </style>
+</head>
+
+<body>
+
+<div id="cursorGlow"></div>
+
+<div class="overlay">
+
+  <h1>CHAPTER 1: ROUND 1</h1>
+
+  <div class="clue-text">
+    Pictures may seem simple at first sight,<br>
+    But each holds a letter if you look right.<br>
+    Don’t overthink what you see,<br>
+    The start of each is the key.
+  </div>
+
+  <div class="row">
+    <img src="1shield.jpg">
+    <img src="3owl.jpg">
+    <img src="2wolf.jpg">      
+    <img src="5dragon.jpg">
+    <img src="4ring.jpg">
+  </div>
+
+  <div class="space"></div>
+
+  <div class="row shift-center">
+    <img src="7feather.jpg">
+    <img src="6ocean.jpg">
+  </div>
+
+  <div class="space"></div>
+
+  <div class="row">
+    <img src="8eagle.jpg">
+    <img src="9lion.jpg">
+    <img src="11octopus.jpg">
+    <img src="10door.jpg">
+  </div>
+
+  <div class="row shift-center">
+    <img src="14axe.jpg">
+    <img src="13igloo.jpg"> 
+    <img src="12robot.jpg">     
+  </div>
+
+  <div class="clue-text">
+    The name you seek lies close at hand,<br>
+    but not as it first appears…<br>
+    Each piece is twisted on its own,<br>
+    set them right, and the handle will reveal itself.
+  </div>
+
+</div>
+
+<script>
+const glow = document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+</script>
+
+</body>
+</html>
